@@ -4,5 +4,14 @@
 
 {% block content %}
   <h1>Welcome {{ new_user.first_name }}!</h1>
-  <p>Your account has been successfully created. Now you can <a href="{% url 'login' %}">log in</a>.</p>
+  <p>Your account has been successfully created. You'll be redirected to the login page,
+    else click <a href="{% url 'login' %}">here</a>to login</p>
+
+<script>
+setTimeout(function(){
+     window.location.href = "{% url 'login' %}";
+}, 5000);
+</script>
+
 {% endblock %}
+

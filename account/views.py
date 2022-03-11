@@ -9,8 +9,8 @@ from .models import Profile
 
 # Create your views here.
 
-def index_page(request):
-    return render(request, 'index.html')
+def about_page(request):
+    return render(request, 'about.html')
 
 
 # A dashboard for all users
@@ -18,7 +18,7 @@ def index_page(request):
 def dashboard(request):
     return render(request,
                   'account/dashboard.html',
-                  {'section': 'dashboard'})
+                  )
 
 
 # this view is for the login form
@@ -76,6 +76,7 @@ def edit(request):
             user_form.save()
             profile_form.save()
             messages.success(request, 'Profile updated successfully!')
+
         else:
             messages.error(request, 'Error updating your profile!')
     else:

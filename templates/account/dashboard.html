@@ -3,6 +3,13 @@
 {% block title %}Folome | Dashboard{% endblock %}
 
 {% block content %}
-  <h1>Dashboard</h1>
-  <p>Welcome to your dashboard. You can <a href="{% url 'edit' %}">edit your profile</a> or <a href="{% url 'password_change' %}">change your password</a>.</p>
+  <h1>
+    {% if request.user.profile.user_type == 'vip' %}
+      VIP Dashboard
+    {% else %}
+      Helper Dashboard
+    {% endif %}
+  </h1>
+  <p>Hello {{ request.user.profile.gender }}, Welcome to your dashboard. </p>
+
 {% endblock %}

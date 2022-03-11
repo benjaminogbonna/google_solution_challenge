@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'pwa',
     'account.apps.AccountConfig',
+    'circle.apps.CircleConfig',
 ]
 
 MIDDLEWARE = [
@@ -127,11 +128,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js', 'serviceworker.js')
+GOOGLE_API_KEY = ''
+
+
+# PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js', 'serviceworker.js')
 
 # Manifest json
 PWA_APP_NAME = 'folome'
@@ -169,4 +174,6 @@ PWA_APP_LANG = 'en-US'
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
 # LOGOUT_URL = 'logout'
-LOGOUT_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'login'
+
+BASE_COUNTRY = 'NG'
