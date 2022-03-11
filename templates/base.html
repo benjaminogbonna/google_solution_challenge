@@ -18,11 +18,16 @@
       <li class="selected">
         <a href="{% url 'dashboard' %}" >My profile</a>
       </li>
-      <li><a href="">F&F</a></li>
       <li><a href="{% url 'edit' %}">Edit your profile</a></li>
       <li><a href="{% url 'password_change' %}">Change Password</a></li>
     </ul>
-  {% endif %}
+    {% endif %}
+    {% if request.user.profile.user_type == 'vip' %}
+      <a href="{% url 'circle:create' %}">Create Circle</a>
+    {% else %}
+      <a href="">VIP connection</a>
+    {% endif %}
+
   <span class="user">
     {% if request.user.is_authenticated %}
       Hello {{ request.user.first_name }},

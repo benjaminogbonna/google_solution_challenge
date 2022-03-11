@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}{{ circle.name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ circle.name }}</h1>
+    <h2>Member Count: {{ circle.members.count }}</h2>
+
+    <div class="content">
+        {% if user in circle.members.all %}
+            <a href="" class="btn btn-md btn-fill btn-warning">
+                <span class="glyphicon glyphicon-remove-cycle"></span>Leave Group
+            </a>
+        {% else %}
+            <a href="" class="btn btn-md btn-fill btn-primary">
+                <span class="glyphicon glyphicon-ok-cycle"></span>Join Circle
+            </a>
+        {% endif %}
+
+    </div>
+{% endblock %}
+
+{% block group_content %}
+
+{% endblock %}

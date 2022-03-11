@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Folome | Create Circle{% endblock %}
+{% load bootstrap5 %}
+
+{% block content %}
+    <h4>Create New Group!</h4>
+    <form action="{% url 'circle:create' %}" method="post" id="group-form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" class="btn btn-primary btn-large" value="Create">
+    </form>
+{% endblock %}

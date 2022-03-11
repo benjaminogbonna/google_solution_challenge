@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/', about_page, name='about'),
     path('', include('account.urls')),
+    path('circle/', include('circle.urls', namespace='circle')),
     path('', include('pwa.urls')),
 ]
 

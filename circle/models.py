@@ -3,6 +3,8 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.urls import reverse
+from django import template
+register = template.Library()
 
 # Create your models here.
 
@@ -18,7 +20,7 @@ class Circle(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
-        self.description_html = self.description
+        self.description = self.description
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
