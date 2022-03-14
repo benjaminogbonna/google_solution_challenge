@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from circle.models import Circle, CircleMember
 
 
 # Create your models here.
@@ -28,11 +29,7 @@ class Profile(models.Model):
     latitude = models.CharField(verbose_name="Latitude", max_length=50, null=True, blank=True)
 
     updated = models.DateTimeField(auto_now=True)
+    # circles = models.ManyToManyField(Circle, through=CircleMember, related_name='circle_member')
 
     def __str__(self):
         return f'Profile for user {self.user.username}'
-
-
-# model for helper users (f&f)
-class Helper(models.Model):
-    pass

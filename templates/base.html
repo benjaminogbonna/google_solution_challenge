@@ -20,13 +20,14 @@
       </li>
       <li><a href="{% url 'edit' %}">Edit your profile</a></li>
       <li><a href="{% url 'password_change' %}">Change Password</a></li>
-    </ul>
+
     {% endif %}
     {% if request.user.profile.user_type == 'vip' %}
-      <a href="{% url 'circle:create' %}">Create Circle</a>
+      <li><a href="{% url 'circle:all' %}">My Circle</a></li>
     {% else %}
-      <a href="">VIP connection</a>
+      <a href="{% url 'circle:all' %}">My Circle</a>
     {% endif %}
+    </ul>
 
   <span class="user">
     {% if request.user.is_authenticated %}
@@ -39,6 +40,7 @@
     {% endif %}
   </span>
   </div>
+
 
   {% if messages %}
     <ul class="messages">

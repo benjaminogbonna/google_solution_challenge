@@ -2,23 +2,23 @@
 {% block title %}{{ circle.name }}{% endblock %}
 
 {% block content %}
-    <h1>{{ circle.name }}</h1>
+    <h1>{{ circle.name }} by {{ circle.owner }}</h1>
+        <p>{{ circle.description }}</p>
     <h2>Member Count: {{ circle.members.count }}</h2>
 
     <div class="content">
         {% if user in circle.members.all %}
-            <a href="" class="btn btn-md btn-fill btn-warning">
-                <span class="glyphicon glyphicon-remove-cycle"></span>Leave Group
+            <a href="{% url 'circle:leave' slug=circle.slug %}" class="btn btn-md btn-fill btn-warning">
+                <span class="glyphicon glyphicon-remove-cycle"></span>Leave Circle
             </a>
         {% else %}
-            <a href="" class="btn btn-md btn-fill btn-primary">
+            <a href="{% url 'circle:join' slug=circle.slug %}" class="btn btn-md btn-fill btn-primary">
                 <span class="glyphicon glyphicon-ok-cycle"></span>Join Circle
             </a>
         {% endif %}
+        {% for member in circle.members.all.members %}
+            <p>member</p>
+        {% endfor %}
 
     </div>
-{% endblock %}
-
-{% block group_content %}
-
 {% endblock %}

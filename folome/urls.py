@@ -24,6 +24,7 @@ urlpatterns = [
     path('about/', about_page, name='about'),
     path('', include('account.urls')),
     path('circle/', include('circle.urls', namespace='circle')),
+    path('posts/', include('posts.urls', namespace='posts')),
     path('', include('pwa.urls')),
 ]
 

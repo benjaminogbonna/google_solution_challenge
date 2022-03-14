@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'pwa',
     'account.apps.AccountConfig',
     'circle.apps.CircleConfig',
+    'posts.apps.PostsConfig',
 ]
 
 MIDDLEWARE = [
