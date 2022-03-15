@@ -17,6 +17,11 @@ class UserRegistrationForm(forms.ModelForm):
         model = User
         fields = ('username', 'first_name', 'email')
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name in ['username']:
+            self.fields[field_name].help_text = None
+
     def clean_password2(self):
         cd = self.cleaned_data
         if cd['password'] != cd['password2']:

@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+
 {% block title %}{{ circle.name }}{% endblock %}
 
 {% block content %}
-    <h1>{{ circle.name }} by {{ circle.owner }}</h1>
+
+    <section class="ftco-section">
+		<div class="container">
+            <h1>{{ circle.name }}</h1>
+            <h3>{{ circle.members.count }} member{{ circle.members.count|pluralize }} <span class="fa fa-users"></span></h3>
+            <hr/>
         <p>{{ circle.description }}</p>
-    <h2>Member Count: {{ circle.members.count }}</h2>
+
 
     <div class="content">
         {% if user in circle.members.all %}
@@ -13,12 +21,26 @@
             </a>
         {% else %}
             <a href="{% url 'circle:join' slug=circle.slug %}" class="btn btn-md btn-fill btn-primary">
-                <span class="glyphicon glyphicon-ok-cycle"></span>Join Circle
+                Join Circle
             </a>
         {% endif %}
         {% for member in circle.members.all.members %}
             <p>member</p>
         {% endfor %}
 
+    </div><br/>
+
+    <div class="col-mg-8">
+        {% if circle.post.count == 0 %}
+            <h2>No posts in this group yet!</h2>
+        {% else %}
+            {% for post in circle.posts.all %}
+                {% include 'posts/_post.html' %}
+            {% endfor %}
+        {% endif %}
     </div>
+
+
+		</div>
+    </section>
 {% endblock %}

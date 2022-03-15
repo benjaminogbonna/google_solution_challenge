@@ -1,15 +1,23 @@
 {% extends "base.html" %}
+{% load bootstrap5 %}
+{% load static %}
 
-{% block title %}Folome | Dashboard{% endblock %}
+{% block title %}Folome | Profile{% endblock %}
 
 {% block content %}
-  <h1>
-    {% if request.user.profile.user_type == 'vip' %}
-      VIP Dashboard
-    {% else %}
-      Helper Dashboard
-    {% endif %}
-  </h1>
-  <p>Hello {{ request.user.first_name }}, Welcome to your dashboard. </p>
+
+<section class="ftco-section">
+		<div class="container">
+          <h1>
+            {% if request.user.profile.user_type == 'vip' %}
+              VIP Profile!
+            {% else %}
+              Helper Profile!
+            {% endif %}
+          </h1>
+          <p>Hello {{ request.user.first_name }}, Welcome to your profile. </p>
+
+		</div>
+</section>
 
 {% endblock %}

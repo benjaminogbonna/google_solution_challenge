@@ -5,11 +5,33 @@
 
 
 {% block content %}
-  <h1>Create an account</h1>
-  <p>Please, sign up using the following form:</p>
-  <form method="post">
-    {% csrf_token %}
-    {% bootstrap_form user_form %}
-    <p><input type="submit" value="Sign Up"></p>
-  </form>
+  <section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-5">
+					<div class="login-wrap p-4 p-md-5">
+		      	<div class="icon d-flex align-items-center justify-content-center">
+		      		<span class="fa fa-user-plus"></span>
+		      	</div>
+		      	<h3 class="text-center mb-4">Sign up to folome</h3>
+				<form class="login-form" method="post">
+					{% csrf_token %}
+		      		<div class="form-group ">
+		      			{% bootstrap_form user_form %}
+		      		</div>
+					<div class="form-group d-md-flex">
+						<div class="w-50">
+							Have account? <a href="{% url 'login' %}">Login</a>
+						</div>
+
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary rounded submit p-3 px-5">Sign up</button>
+					</div>
+	          </form>
+	        </div>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}

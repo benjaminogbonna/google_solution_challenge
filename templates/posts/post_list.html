@@ -6,7 +6,7 @@
         {% if request.user.is_authenticated %}
         <div class="card card-with-shadow">
             <div class="content">
-                <h5 class="title">Your Groups</h5>
+                <h5 class="title">Your Circle</h5>
                 <ul class="list-unstyled">
                     {% for member_group in get_user_groups %}
                         <li class="group li-with-bullet">
@@ -19,27 +19,25 @@
             </div>
         </div>
         {% endif %}
-        <div class="card card-with-shadow">
-            <div class="content">
-                <h5 class="title">All Groups</h5>
-                <ul class="list-unstyled">
-                    {% for other_group in all_other_groups %}
-                        <li class="group li-with-bullet">
-                            <a href="{% url 'groups:single' slug=other_group.slug %}">
-                                {{ other_group.name }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
+
     </div>
 {% endblock %}
 
 {% block post_content %}
 <div class="col-md-8">
 	{% for post in post_list %}
-  {% include "posts/_post.html" %}
+      {% include "posts/_post.html" %}
 	{% endfor %}
 </div>
+
+<div class="col-mg-8">
+
+        {% for post in post_list %}
+            {% if post.count > 0 %}
+                <h2> {{ post.count }}</h2>
+            {% else %}
+                {% include "posts/_post.html" %}
+            {% endif %}
+        {% endfor %}
+    </div>
 {% endblock %}

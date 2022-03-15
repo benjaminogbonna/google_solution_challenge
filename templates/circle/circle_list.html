@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
-{% block title %}{{ circle.name }}{% endblock %}
+{% load bootstrap5 %}
+{% load static %}
 
 {% block content %}
-    <div class='col-md-4'>
 
+
+
+<section class="ftco-section">
+		<div class="container">
             <h2>Your Circle</h2>
-
-        {% if user.is_authenticated %}
+            {% if user.is_authenticated %}
 
         <div class="col-md-8">
         <div class="list-group">
@@ -15,15 +18,11 @@
                 {% if request.user == circle.owner %}
                     <a href="{% url 'circle:single' slug=circle.slug %}" class="list-group-item">
                         <h3 class="title list_group-item-heading">{{ circle.name }}</h3>
-                        <p>by: {{ circle.owner }}</p>
+                        <p>By: {{ circle.owner }}-{{ circle.members.count }} member{{ circle.members.count|pluralize }} <span class="fa fa-users"></span></p>
+
                         <div class="list-group-item-text container-fluid">
                             {{ circle.description|safe }}
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <span class="badge">{{ circle.members.count }}</span>
-                                    member{{ circle.members.count|pluralize }}
-                                </div>
-                            </div>
+
                         </div>
                     </a>
                 {% else %}
@@ -39,7 +38,7 @@
                         {% if request.user in circle.members.all %}
                             <a href="{% url 'circle:single' slug=circle.slug %}" class="list-group-item">
                         <h3 class="title list_group-item-heading">{{ circle.name }}</h3>
-                        <p>by: {{ circle.owner }}</p>
+                        <p>By: {{ circle.owner }}</p>
                         <div class="list-group-item-text container-fluid">
                             {{ circle.description|safe }}
                             <div class="row">
@@ -47,6 +46,10 @@
                                     <span class="badge">{{ circle.members.count }}</span>
                                     member{{ circle.members.count|pluralize }}
                                 </div>
+                                <div class="col-md-4">
+                                <span class="badge">{{ circle.posts.count }}</span>
+                                post{{ circle.posts.count|pluralize }}
+                            </div>
                             </div>
                         </div>
                     </a>
@@ -61,8 +64,8 @@
         </div>
     </div>
         {% endif %}
-    </div>
 
 
-
+		</div>
+</section>
 {% endblock %}

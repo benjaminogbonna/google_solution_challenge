@@ -1,12 +1,19 @@
 {% extends "base.html" %}
+{% load bootstrap5 %}
+{% load static %}
 
 {% block title %}Welcome{% endblock %}
 
 {% block content %}
-  <h1>Welcome {{ new_user.first_name }}!</h1>
-  <p>Your account has been successfully created. You'll be redirected to the login page,
-    else click <a href="{% url 'login' %}">here</a>to login</p>
 
+<section class="ftco-section">
+		<div class="container">
+          <h1>Welcome {{ new_user.first_name }}!</h1>
+          <p>Your account has been successfully created. You'll be redirected to the login page,
+            else click <a href="{% url 'login' %}">here</a>to login</p>
+
+		</div>
+</section>
 <script>
 setTimeout(function(){
      window.location.href = "{% url 'login' %}";
