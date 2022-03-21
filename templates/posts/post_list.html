@@ -1,5 +1,7 @@
-{% extends 'posts/post_base.html' %}
-{% block title %}All Posts {% endblock %}
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% block title %}Posts {% endblock %}
 
 {% block prepost %}
     <div class="col-md-4">
@@ -23,21 +25,46 @@
     </div>
 {% endblock %}
 
-{% block post_content %}
-<div class="col-md-8">
-	{% for post in post_list %}
-      {% include "posts/_post.html" %}
-	{% endfor %}
-</div>
+{% block content %}
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="col-md-8">
+            {% for post in post_list %}
+                  {% include "posts/_post.html" %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
 
 <div class="col-mg-8">
 
         {% for post in post_list %}
-            {% if post.count > 0 %}
+            {% if post.count < 1 %}
                 <h2> {{ post.count }}</h2>
             {% else %}
                 {% include "posts/_post.html" %}
             {% endif %}
         {% endfor %}
     </div>
-{% endblock %}
+
+    <div class="col-md-4">
+        {% if request.user.is_authenticated %}
+        <div class="card card-with-shadow">
+            <div class="content">
+                <h5 class="title">Your Circle</h5>
+                <ul class="list-unstyled">
+                    {% for member_circle in get_user_circle %}
+                        <li class="group li-with-bullet">
+                            <a href="{% url 'circle:single' slug=member_circle.circle.slug %}">
+                                {{ member_circle.circle.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>

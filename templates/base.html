@@ -17,14 +17,16 @@
   <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
   <!-- SimpleLightbox plugin CSS-->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <script src="https://kit.fontawesome.com/ab2155e76b.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
-  <link href="{% static 'css/bas.css' %}" rel="stylesheet">
+  <link href="{% static 'css/map.css' %}" rel="stylesheet">
   <link href="{% static 'css/log_style.css' %}" rel="stylesheet">
   <link href="{% static 'css/styles.css' %}" rel="stylesheet">
 
-
 </head>
-<body>
+<body onload="calcRoute()">
 
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container px-4 px-lg-5">
@@ -69,10 +71,11 @@
     </ul>
   {% endif %}
 
-  <div id="content">
+<div id="content">
     {% block content %}
     {% endblock %}
-  </div>
+</div>
+
 <footer class="bg-light py-5">
     <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2022 - folome</div></div>
 </footer>
@@ -87,6 +90,12 @@
   <script src="{% static 'js/popper.js' %}"></script>
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
   <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=[API_KEY]&libraries=places"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="{% static 'js/map.js' %}"></script>
+
 
 </body>
 </html>

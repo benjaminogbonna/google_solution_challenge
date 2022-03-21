@@ -49,7 +49,7 @@ class PostDetail(SelectRelatedMixin, generic.DetailView):
 
 
 class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
-    fields = ('message', 'circle')
+    fields = ('message', 'start', 'destination', 'circle')
     model = models.Post
 
     def form_valid(self, form):

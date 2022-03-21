@@ -137,7 +137,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 GOOGLE_API_KEY = ''
 
 
-# PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js', 'serviceworker.js')
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js', 'serviceworker.js')
 
 # Manifest json
 PWA_APP_NAME = 'folome'
@@ -178,3 +178,10 @@ LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'login'
 
 BASE_COUNTRY = 'NG'
+
+# sending emails
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = ''  # your mail
+EMAIL_HOST_PASSWORD = ''  # your password
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

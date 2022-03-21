@@ -16,9 +16,7 @@ def about_page(request):
 # A dashboard for all users
 @login_required
 def dashboard(request):
-    return render(request,
-                  'account/dashboard.html',
-                  )
+    return render(request, 'account/dashboard.html')
 
 
 # this view is for the login form

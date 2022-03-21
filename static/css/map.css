@@ -1,0 +1,42 @@
+.fa-map-marker-alt{
+  color: red;
+}
+
+.fa-dot-circle {
+  color: green;
+}
+
+/*Jumbotron*/
+.jumbotron {
+  background-color: transparent;
+  margin: 0;
+  padding: 10px;
+}
+
+.jumbotron h1 {
+  letter-spacing: 2.5px;
+  font-size: 3.5em;
+}
+
+.jumbotron h1,
+.jumbotron p {
+  text-align: center;
+}
+
+/*map*/
+#googleMap {
+  width: 80%;
+  height: 400px;
+  margin: 10px auto;
+}
+
+/*output box*/
+#output {
+  text-align: center;
+  
+  margin: 20px auto;
+}
+
+#mode {
+  color: black;
+}

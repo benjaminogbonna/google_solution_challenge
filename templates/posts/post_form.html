@@ -1,12 +1,44 @@
-{% extends 'posts/post_base.html' %}
+{% extends 'base.html' %}
 {% load bootstrap5 %}
+{% load static %}
 {% block title %}Create Post{% endblock %}
 
-{% block post_content %}
-    <h4>Create New Trip Post!</h4>
-    <form action="{% url 'posts:create' %}" method="post" id="post-form">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        <input type="submit" class="btn btn-primary btn-large" value="Post">
-    </form>
+{% block content %}
+
+    <section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-8">
+					<div class="login-wrap p-4 p-md-5">
+		      	<div class="icon d-flex align-items-center justify-content-center">
+		      		<span class="fa fa-map"></span>
+		      	</div>
+		      	<h3 class="text-center mb-4">Create New Trip Post!</h3>
+				<form class="login-form" id="postForm" action="{% url 'posts:create' %}" method="post">
+					{% csrf_token %}
+		      		<div class="form-group ">
+						{% bootstrap_form form %}
+
+		      		</div>
+					<div class="form-group d-md-flex">
+						<div class="w-50">
+							<a href="{% url 'dashboard' %}">Cancle</a>
+						</div>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary rounded submit p-3 px-5">Post</button>
+					</div>
+	          </form>
+	        </div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
 {% endblock %}
+<div class="mb-3">
+	<label class="form-label" for="id_message">Message</label>
+	{{ form.message }}
+	<input type="text" name="message" maxlength="50" class="form-control" placeholder="Message" title="" required id="id_message">
+</div>

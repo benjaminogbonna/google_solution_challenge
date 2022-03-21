@@ -10,15 +10,18 @@ User = get_user_model()
 class Post(models.Model):
     user = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now=True)
-    message = models.TextField()
-    message_html = models.TextField(editable=False)
-    circle = models.ForeignKey(Circle, related_name='posts', null=True, blank=True, on_delete=models.CASCADE)
+    message = models.CharField(verbose_name="Message", max_length=50, default='')
+    start = models.CharField(verbose_name="Start", max_length=100, default='')
+    destination = models.CharField(verbose_name="Destination", max_length=100, default='')
+    circle = models.ForeignKey(Circle, related_name='posts', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.message
 
     def save(self, *args, **kwargs):
-        self.message_html = self.message
+        self.message = self.message
+        self.start = self.start
+        self.destination = self.destination
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -27,4 +30,4 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-        unique_together = ['user', 'message']
+        unique_together = ['user', 'message', 'start', 'destination']

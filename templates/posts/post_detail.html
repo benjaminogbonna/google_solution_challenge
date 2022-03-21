@@ -1,7 +1,30 @@
-{% extends "posts/post_base.html" %}
+{% extends "base.html" %}
+{% load bootstrap5 %}
+{% load static %}
 
-{% block post_content %}
-<div class="col-md-8">
-    {% include "posts/_post.html" %}
-</div>
+{% block content %}
+<section class="ftco-section">
+    <div class="container">
+        <div class="col-md-8">
+            {% include "posts/_post.html" %}
+        </div>
+    </div>
+    <div class="jumbotron">
+        <div class="container-fluid">
+            <form>
+                <input type="hidden" value="{{ post.start }}" id="from">
+                <input type="hidden" value="{{ post.destination }}" id="to">
+            </form>
+        </div>
+        <div class="container-fluid">
+            <div id="googleMap">
+
+            </div>
+            <div id="output">
+
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}
