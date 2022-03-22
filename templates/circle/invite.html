@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load bootstrap5 %}
 {% load static %}
-{% block title %}Folome | Create Circle{% endblock %}
+{% block title %}Folome | Invite{% endblock %}
 
 {% block content %}
     <section class="ftco-section">
@@ -12,12 +12,12 @@
                         <div class="icon d-flex align-items-center justify-content-center">
                             <span class="fa fa-users"></span>
                         </div>
-		      	        <h3 class="text-center mb-4">Create Circle</h3>
-                             <form action="{% url 'circle:create' %}" method="post" class="login-form" id="group-form">
+		      	        <h3 class="text-center mb-4">Invite Members</h3>
+                             <form action="" method="post" class="login-form" id="group-form">
                                 {% csrf_token %}
                                 {% bootstrap_form form %}
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary rounded submit p-3 px-5">Create Circle</button>
+                                    <button type="submit" class="btn btn-primary rounded submit p-3 px-5">Send Invite</button>
                                 </div>
                              </form>
                         </div>

@@ -16,16 +16,27 @@
 
     <div class="content">
         {% if user in circle.members.all %}
-            <a href="{% url 'circle:leave' slug=circle.slug %}" class="btn btn-md btn-fill btn-warning">
-                <span class="glyphicon glyphicon-remove-cycle"></span>Leave Circle
+            {% if request.user.profile.user_type == 'vip' %}
+            <a href="{% url 'circle:invite_member' %}" class="btn btn-md btn-fill btn-success">
+                Add members
             </a>
+            <a href="{% url 'circle:leave' slug=circle.slug %}" class="btn btn-md btn-fill btn-warning">
+                Delete Circle
+            </a>
+            {% endif %}
+            {% if request.user.profile.user_type == 'helper' %}
+              <a href="{% url 'circle:leave' slug=circle.slug %}" class="btn btn-md btn-fill btn-warning">
+                Leave Circle
+              </a>
+            {% endif %}
         {% else %}
             <a href="{% url 'circle:join' slug=circle.slug %}" class="btn btn-md btn-fill btn-primary">
                 Join Circle
             </a>
         {% endif %}
-        {% for member in circle.members.all.members %}
-            <p>member</p>
+
+        {% for member in circle.members.members %}
+            <p>user</p>
         {% endfor %}
 
     </div><br/>

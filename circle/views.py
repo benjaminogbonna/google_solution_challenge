@@ -6,6 +6,8 @@ from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from django.db import IntegrityError
 from circle.models import Circle, CircleMember
+from .forms import CircleInviteForm
+from django.core.mail import send_mail
 
 # Create your views here.
 
@@ -64,3 +66,19 @@ class LeaveCircle(LoginRequiredMixin, generic.RedirectView):
             messages.success(self.request, 'You have left the circle!')
 
         return super().get(request, *args, **kwargs)
+
+
+def invite_member(request):
+    if request.method == 'POST':
+        form = CircleInviteForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            # Send email
+            subject = f"{cd['name']} invited you to join their circle"
+            message = f"Please, join my circle at {cd['url']}"
+            send_mail(subject, message, [cd['email']], [cd['to']])
+            sent = True
+    else:
+        form = CircleInviteForm()
+    return render(request, 'circle/invite.html',
+                  {'form': form})

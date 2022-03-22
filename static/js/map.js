@@ -3,7 +3,7 @@
 var myLatLng = { lat: 9.0765, lng: 7.3986 };
 var mapOptions = {
     center: myLatLng,
-    zoom: 7,
+    zoom: 10,
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
 };

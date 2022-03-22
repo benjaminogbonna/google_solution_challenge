@@ -137,7 +137,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 GOOGLE_API_KEY = ''
 
 
-PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js', 'serviceworker.js')
+# PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js', 'serviceworker.js')
 
 # Manifest json
 PWA_APP_NAME = 'folome'
@@ -180,8 +180,10 @@ LOGOUT_REDIRECT_URL = 'login'
 BASE_COUNTRY = 'NG'
 
 # sending emails
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = ''  # your mail
 EMAIL_HOST_PASSWORD = ''  # your password
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'
