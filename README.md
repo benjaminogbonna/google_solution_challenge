@@ -26,7 +26,6 @@ Run `python manage.py runserver` to start server (http://127.0.0.1:8000/
 - Django
 - Google Maps
 - PWA
-- Firebase
 
 
 ## Contributing

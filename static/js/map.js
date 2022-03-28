@@ -70,36 +70,66 @@ var input2 = document.getElementById("id_destination");
 var autocomplete2 = new google.maps.places.Autocomplete(input2, options);
 
 
+const map_options = {
+  enableHighAccuracy: true
+}
+
+function error_msg(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+
 // Get current location
 function getLocation() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
+    navigator.geolocation.getCurrentPosition(getPosition, error_msg, map_options);
   } else {
-    x.innerHTML = "Geolocation is not supported by this browser.";
+    console.log('Geolocation is not supported by this browser')
   }
 }
 
-function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude +
-  "<br>Longitude: " + position.coords.longitude;
+function getPosition(position) {
+  const lat =  position.coords.latitude;
+  const lng =  position.coords.longitude;
+  const latlng = {lat, lng}
+
+    // Create marker
+    var marker = new google.maps.Marker({
+      map: map,
+      position: new google.maps.LatLng(latlng),
+      title: 'VIP'
+    });
+
+    // Add circle overlay and bind to marker
+    var circle = new google.maps.Circle({
+      map: map,
+      radius: 500,    // 10 miles in metres
+      fillColor: '#AA0000',
+      fillOpacity: 0.2,
+      strokeColor: "#FF0000",
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+    });
+    circle.bindTo('center', marker, 'position');
 }
 
+setInterval(getLocation, 4000);
 
 // Create marker
-var marker = new google.maps.Marker({
-  map: map,
-  position: new google.maps.LatLng(8.9807, 7.1805),
-  title: 'VIP'
-});
+//var marker = new google.maps.Marker({
+//  map: map,
+//  position: new google.maps.LatLng(8.978748, 7.179244),
+//  title: 'VIP'
+//});
 
 // Add circle overlay and bind to marker
-var circle = new google.maps.Circle({
-  map: map,
-  radius: 500,    // 10 miles in metres
-  fillColor: '#AA0000',
-  fillOpacity: 0.2,
-  strokeColor: "#FF0000",
-  strokeOpacity: 0.8,
-  strokeWeight: 2,
-});
-circle.bindTo('center', marker, 'position');
+//var circle = new google.maps.Circle({
+//  map: map,
+//  radius: 500,    // 10 miles in metres
+//  fillColor: '#AA0000',
+//  fillOpacity: 0.2,
+//  strokeColor: "#FF0000",
+//  strokeOpacity: 0.8,
+//  strokeWeight: 2,
+//});
+//circle.bindTo('center', marker, 'position');
+
