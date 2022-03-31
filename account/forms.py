@@ -43,5 +43,4 @@ class ProfileEditForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ('gender', 'phone', 'user_type', 'address', 'town', 'post_code',
-                  'country', 'longitude', 'latitude')
+        fields = ('gender', 'phone', 'user_type', 'address', 'town', 'country')
